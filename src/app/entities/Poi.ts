@@ -10,6 +10,13 @@ declare module 'Entities' {
     videoUrl: string;
     description: string;
     location: PoiLocation;
+  }
 
+  export class City {
+    id: string;
+    name: string;
+    imageUrl: string;
+    description: string;
+    location: PoiLocation;
   }
 }

@@ -58,7 +58,9 @@
     </td>
 
     <td>
-      {{poi.cityId}}
+      <span *ngIf="allCities?.size > 0 && poi?.id">
+      {{allCities.get(poi.cityId).name}}
+      </span>
     </td>
 
     <td>
@@ -74,10 +76,10 @@
     </td>
 
     <td>
-      {{poi.location.latitude}}
+      {{poi.location.latitude | number}}
     </td>
     <td>
-      {{poi.location.longitude}}
+      {{poi.location.longitude | number}}
     </td>
 
   </tr>

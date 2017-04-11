@@ -13,6 +13,11 @@ export class PoiService {
       .map(response => response.json());
   }
 
+  getAllCities() {
+    return this.http.get('https://cityguide.nbakaev.com/api/v1/city')
+      .map(response => response.json());
+  }
+
   getPoiById(id: string) {
     return this.http.get('https://cityguide.nbakaev.com/api/v1/poi/id/'+id)
       .map(response => response.json());

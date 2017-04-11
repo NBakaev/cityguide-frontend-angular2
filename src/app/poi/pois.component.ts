@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PoiService} from '../poi.service';
-import {Poi} from "Entities";
+import {City, Poi} from 'Entities';
 
 @Component({
   selector: 'app-poi-all',
@@ -10,8 +10,10 @@ import {Poi} from "Entities";
 })
 export class NewcomponentComponent implements OnInit {
   allPois: Array<Poi> = [];
+  allCities: Map<string, City> = new Map<string, City>();
 
   constructor(poiService: PoiService) {
+    const __this = this;
 
     poiService.getAllPoi()
       .subscribe(
@@ -20,6 +22,16 @@ export class NewcomponentComponent implements OnInit {
         () => console.log('Completed!')
       );
 
+    poiService.getAllCities()
+      .subscribe(
+        data => {
+          data.forEach(function (data2) {
+            __this.allCities.set(data2.id, data2);
+          });
+        },
+        error => console.error('Error: ' + error),
+        () => console.log('Completed!')
+      );
   }
 
   trackById(index, contact) {
