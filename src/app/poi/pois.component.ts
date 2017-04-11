@@ -22,6 +22,10 @@ export class NewcomponentComponent implements OnInit {
 
   }
 
+  trackById(index, contact) {
+    return contact.id;
+  }
+
   ngOnInit() {
 
   }

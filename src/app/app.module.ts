@@ -8,11 +8,16 @@ import {NewcomponentComponent} from './poi/pois.component';
 import {MdButtonModule, MdCheckboxModule, MdToolbarModule, MdIconModule, MdMenuModule, MdInputModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import 'hammerjs';
+import { routes } from './app.router';
+import { PoiDetailsComponent } from './poi-details/poi-details.component';
+// import 'tinymce';
+import { TinymceModule } from 'angular2-tinymce';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NewcomponentComponent
+    NewcomponentComponent,
+    PoiDetailsComponent
   ],
   imports: [
     HttpModule,
@@ -20,7 +25,9 @@ import 'hammerjs';
     FormsModule,
     HttpModule,
     MdButtonModule, MdCheckboxModule, MdToolbarModule, MdIconModule, MdMenuModule, MdInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    routes,
+    TinymceModule.withConfig({})
   ],
   providers: [],
   bootstrap: [AppComponent]

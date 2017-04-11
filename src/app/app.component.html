@@ -2,15 +2,15 @@
 <aside class="sidenav">
   <div class="sidenav-container">
     <header>
-      <a ng-reflect-router-link="" href="#/">
+      <a [routerLink]="['/']">
         <img alt="MD2" src="https://github.com/NBakaev/cityguide/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png?raw=true">
       </a>
     </header>
-    <ul>
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
-    </ul>
+    <!--<ul>-->
+      <!--<li>1</li>-->
+      <!--<li>2</li>-->
+      <!--<li>3</li>-->
+    <!--</ul>-->
   </div>
 </aside>
 
@@ -40,7 +40,9 @@
   </md-toolbar>
 
   <div class="container">
-    <app-poi-all></app-poi-all>
+    <div class="inner-outlet">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 
 </div>

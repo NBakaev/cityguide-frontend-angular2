@@ -34,13 +34,13 @@
   </thead>
 
   <tbody>
-  <tr *ngFor="let poi of allPois;let i = index; trackBy: poi?.id">
+  <tr *ngFor="let poi of allPois;let i = index; trackBy: trackById">
     <td>
       {{i+1}}
     </td>
 
     <td>
-      <a href="#/poi/{{poi.id}}">
+      <a [routerLink]="['/poi/details', poi.id]">
         <div *ngIf="poi.imageUrl != null && poi.imageUrl != ''">
           <img src="{{poi.imageUrl}}" height="50" width="50">
         </div>
@@ -52,7 +52,9 @@
     </td>
 
     <td>
-      {{poi.name}}
+      <a [routerLink]="['/poi/details', poi.id]">
+        {{poi.name}}
+      </a>
     </td>
 
     <td>

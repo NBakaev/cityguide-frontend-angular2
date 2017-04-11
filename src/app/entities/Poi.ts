@@ -8,6 +8,7 @@ declare module 'Entities' {
     imageUrl: string;
     cityId: string;
     videoUrl: string;
+    description: string;
     location: PoiLocation;
 
   }
