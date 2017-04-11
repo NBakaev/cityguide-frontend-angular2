@@ -1,0 +1,83 @@
+<table class="table table-condensed table-stripped table-hover">
+  <thead>
+  <tr>
+    <th class="mini-col-md">
+      №
+    </th>
+    <th>
+    </th>
+
+    <th>
+      Name
+    </th>
+    <th>
+      city
+    </th>
+
+    <th>
+      image
+    </th>
+
+    <th>
+      video
+    </th>
+
+    <th class="col-md-1">
+      latitude
+    </th>
+
+    <th class="col-md-1">
+      longitude
+    </th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let poi of allPois;let i = index; trackBy: poi?.id">
+    <td>
+      {{i+1}}
+    </td>
+
+    <td>
+      <a href="#/poi/{{poi.id}}">
+        <div *ngIf="poi.imageUrl != null && poi.imageUrl != ''">
+          <img src="{{poi.imageUrl}}" height="50" width="50">
+        </div>
+
+        <div *ngIf="poi.imageUrl == null || poi.imageUrl == ''">
+          <img src="../../assets/ic_placeholder.jpg" height="50" width="50">
+        </div>
+      </a>
+    </td>
+
+    <td>
+      {{poi.name}}
+    </td>
+
+    <td>
+      {{poi.cityId}}
+    </td>
+
+    <td>
+      <md-input-container>
+        <input mdInput placeholder="" ngModel="{{poi.imageUrl}}">
+      </md-input-container>
+    </td>
+
+    <td>
+      <md-input-container>
+        <input mdInput placeholder="" ngModel="{{poi.videoUrl}}">
+      </md-input-container>
+    </td>
+
+    <td>
+      {{poi.location.latitude}}
+    </td>
+    <td>
+      {{poi.location.longitude}}
+    </td>
+
+  </tr>
+  </tbody>
+</table>
