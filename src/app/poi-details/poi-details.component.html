@@ -1,47 +1,72 @@
-<!--<div style="position: fixed;  bottom: 4px;  right: 13px; z-index: 999999999999999;">-->
-<!--<md-button class="md-fab md-primary" aria-label="" ng-click="updatePoi(poi)">-->
-<!--<md-icon md-svg-src="assets/ic_save_white_36px.svg"></md-icon>-->
-<!--</md-button>-->
+<div style="position: fixed;  bottom: 4px;  right: 13px; z-index: 999999999999999;">
+  <button md-button md-fab class="md-fab md-primary" aria-label="" (click)="submitEdit()" *ngIf="editMode">
+    <img src="assets/img/ic_save_white_36px.svg">
+  </button>
 
-<!--<md-button class="md-fab md-primary" aria-label="" ng-click="editMode = !editMode">-->
-<!--<md-icon md-svg-src="assets/ic_mode_edit_white_36px.svg"></md-icon>-->
-<!--</md-button>-->
-<!--</div>-->
+  <button md-button md-fab class="md-fab md-primary" aria-label="" (click)="changeEditMode()">
+    <img src="assets/img//ic_mode_edit_white_36px.svg">
+  </button>
+</div>
 
 <div class="row" style="padding-top: 15px;">
   <div class="col-md-8">
-    <h2>{{poi?.name}}</h2> <br>
 
-    <!--<div ng-if="!editMode">-->
-    <!--<div ng-model="poi.description" text-angular ta-disabled="true" ta-toolbar="false"></div>-->
-    <!--</div>-->
+    <div *ngIf="editMode && poi">
+      <input [(ngModel)]="poi.name" type="text" class="form-control">
+      <br>
 
-    <br><br>
+      <div class="row">
+        <div class="col-md-6">
+          <input placeholder="imageUrl" [(ngModel)]="poi.content.imageUrl" class="form-control"> <br>
+        </div>
+        <div class="col-md-6">
+          <input placeholder="videoUrl" [(ngModel)]="poi.content.videoUrl" class="form-control">
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-6">
+          lat <br>
+          <input placeholder="lat" [(ngModel)]="poi.location.latitude" class="form-control"> <br>
+        </div>
+        <div class="col-md-6">
+          long <br>
+          <input placeholder="long" [(ngModel)]="poi.location.longitude" class="form-control">
+        </div>
+      </div>
 
-    <!--{{poi?.description}}-->
+      <button class="btn btn-danger pull-right" (click)="deletePoi()">
+        Удалить
+      </button>
+    </div>
+
+    <div *ngIf="!editMode">
+      <h1>{{poi?.name}}</h1> <br>
+    </div>
 
     <div *ngIf="poi">
       <app-tinymce [(ngModel)]='poi.description'></app-tinymce>
     </div>
 
-
-    <!--<div ng-if="editMode">-->
-    <!--<div text-angular ng-model="poi.description" style=""></div>-->
-    <!--</div>-->
   </div>
 
-  <div class="col-md-4" >
-    <img [attr.src]="poi?.imageUrl" class="img img-responsive">
+  <div class="col-md-4">
+    <img [attr.src]="poi?.content.imageUrl" class="img img-responsive">
     <br><br>
 
     <div>
       <img [attr.src]="mapUrlSrc">
     </div>
 
+    <div *ngIf="videoUrlIframeSrc">
+      <br><br>
+      <iframe width="420" height="315" [attr.src]="videoUrlIframeSrc" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <br>
+
     <br><br>
 
-      <iframe width="420" height="315" [attr.src]="videoUrlIframeSrc" frameborder="0" allowfullscreen></iframe>
+    <qr-code [value]="pageUrl" [size]="274"></qr-code>
 
-    <br>
   </div>
 </div>

@@ -1,3 +1,9 @@
+<div style="position: fixed;  bottom: 4px;  right: 13px; z-index: 999999999999999;">
+  <button md-button md-fab class="md-fab md-primary" aria-label="" (click)="addPoi()">
+    <img src="assets/img/ic_add_black_24px.svg"/>
+  </button>
+</div>
+
 <table class="table table-condensed table-stripped table-hover">
   <thead>
   <tr>
@@ -8,18 +14,10 @@
     </th>
 
     <th>
-      Name
+      Название
     </th>
     <th>
-      city
-    </th>
-
-    <th>
-      image
-    </th>
-
-    <th>
-      video
+      Город
     </th>
 
     <th class="col-md-1">
@@ -41,12 +39,12 @@
 
     <td>
       <a [routerLink]="['/poi/details', poi.id]">
-        <div *ngIf="poi.imageUrl != null && poi.imageUrl != ''">
-          <img src="{{poi.imageUrl}}" height="50" width="50">
+        <div *ngIf="poi.content.imageUrl != null && poi.content.imageUrl != ''">
+          <img src="{{poi.content.imageUrl}}" height="50" width="50">
         </div>
 
-        <div *ngIf="poi.imageUrl == null || poi.imageUrl == ''">
-          <img src="../../assets/ic_placeholder.jpg" height="50" width="50">
+        <div *ngIf="poi.content.imageUrl == null || poi.content.imageUrl == ''">
+          <img src="../../assets/img/ic_placeholder.jpg" height="50" width="50">
         </div>
       </a>
     </td>
@@ -58,21 +56,9 @@
     </td>
 
     <td>
-      <span *ngIf="allCities?.size > 0 && poi?.id">
-      {{allCities.get(poi.cityId).name}}
+      <span>
+      {{ poi.cityId | printCity }}
       </span>
-    </td>
-
-    <td>
-      <md-input-container>
-        <input mdInput placeholder="" ngModel="{{poi.imageUrl}}">
-      </md-input-container>
-    </td>
-
-    <td>
-      <md-input-container>
-        <input mdInput placeholder="" ngModel="{{poi.videoUrl}}">
-      </md-input-container>
     </td>
 
     <td>

@@ -4,12 +4,14 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import {NewcomponentComponent} from 'app/poi/pois.component';
+import {PoisListComponent} from 'app/poi/pois.component';
 import {PoiDetailsComponent} from './poi-details/poi-details.component';
+import {CitiesListComponent} from './cities-list/cities-list.component';
 
 export const router: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
-  { path: 'main', component: NewcomponentComponent},
+  { path: 'main', component: PoisListComponent},
+  { path: 'cities', component: CitiesListComponent},
   { path: 'poi/details/:id', component: PoiDetailsComponent }
 ];
 

@@ -1,43 +1,37 @@
-<div class="sidenav sidenav-backdrop"></div>
-<aside class="sidenav">
-  <div class="sidenav-container">
-    <header>
-      <a [routerLink]="['/']">
-        <img alt="MD2" src="https://github.com/NBakaev/cityguide/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png?raw=true">
-      </a>
-    </header>
-    <!--<ul>-->
-      <!--<li>1</li>-->
-      <!--<li>2</li>-->
-      <!--<li>3</li>-->
-    <!--</ul>-->
-  </div>
-</aside>
-
 <div class="main">
   <md-toolbar color="primary">
-    <span>City Guide</span>
+    <span>Мобильный гид</span>
     <span class="spacer"></span>
-    <!--<button class="sidenav-toggle" type="button"><em class="fa fa-bars"></em></button>-->
-
-    <button md-icon-button [mdMenuTriggerFor]="menu">
-      <md-icon>more_vert</md-icon>
-    </button>
-    <md-menu #menu="mdMenu">
-      <button md-menu-item>
-        <md-icon>fingerprint</md-icon>
-        <span>Login</span>
-      </button>
-      <button md-menu-item disabled>
-        <md-icon>announcement</md-icon>
-        <span>Issues</span>
-      </button>
-      <button md-menu-item>
-        <md-icon>notifications_off</md-icon>
-        <span>Disable alerts</span>
-      </button>
-    </md-menu>
   </md-toolbar>
+
+  <div class="sidenav sidenav-backdrop"></div>
+  <aside class="sidenav">
+    <div class="sidenav-container">
+      <header>
+        <a [routerLink]="['/']">
+          <img alt="MD2" src="assets/img/ic_launcher.png">
+        </a>
+      </header>
+      <ul class="margin-top-md">
+        <li>
+          <a [routerLink]="['/']">
+            Интересные места
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/cities']">
+            Города
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/']">
+            Путешествия
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
 
   <div class="container">
     <div class="inner-outlet">

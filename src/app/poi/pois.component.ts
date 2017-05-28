@@ -1,45 +1,34 @@
 import {Component, OnInit} from '@angular/core';
-import {PoiService} from '../poi.service';
-import {City, Poi} from 'Entities';
+import {PoiService} from './poi.service';
+import {Poi} from '../entities/poi';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-poi-all',
   templateUrl: './pois.component.html',
-  styleUrls: ['./pois.component.css'],
-  providers: [PoiService]
+  styleUrls: ['./pois.component.less'],
 })
-export class NewcomponentComponent implements OnInit {
+export class PoisListComponent {
   allPois: Array<Poi> = [];
-  allCities: Map<string, City> = new Map<string, City>();
 
-  constructor(poiService: PoiService) {
-    const __this = this;
-
-    poiService.getAllPoi()
-      .subscribe(
-        pois => this.allPois = pois,
-        error => console.error('Error: ' + error),
-        () => console.log('Completed!')
-      );
-
-    poiService.getAllCities()
-      .subscribe(
-        data => {
-          data.forEach(function (data2) {
-            __this.allCities.set(data2.id, data2);
-          });
-        },
-        error => console.error('Error: ' + error),
-        () => console.log('Completed!')
-      );
+  constructor(private poiService: PoiService, private router: Router) {
+    poiService.getAllPoi().subscribe(
+      pois => this.allPois = pois,
+      error => console.error('Error: ' + error),
+      () => {}
+    );
   }
 
   trackById(index, contact) {
     return contact.id;
   }
 
-  ngOnInit() {
-
+  addPoi() {
+    const poi = new Poi();
+    this.poiService.addPoi(poi).subscribe(x => {
+      console.log(x);
+      this.router.navigate(['poi', 'details', x.id]);
+    });
   }
 
 }
