@@ -1,0 +1,108 @@
+<div>
+  <table class="table table-condensed table-stripped table-hover table-responsive">
+    <thead>
+    <tr>
+      <th class="" style="width: 1%">
+        №
+      </th>
+      <th class="col-md-1">
+        ID
+      </th>
+
+      <th style="width: 20%">
+        Название
+      </th>
+
+      <th style="width: 20%">
+        Описание
+      </th>
+
+      <th>
+        Число POI
+      </th>
+
+      <th>
+        Адрес картинки
+      </th>
+
+      <th>
+        Адрес видео
+      </th>
+
+      <th class="col-md-1">
+        широта
+      </th>
+
+      <th class="col-md-1">
+        долгота
+      </th>
+
+      <th class="" style="width: 8%">
+        радиус
+      </th>
+
+      <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let poi of allCities; let i = index">
+      <td>{{i + 1}}</td>
+      <td>
+        <!--{{poi.id}}-->
+        <!--<br>-->
+        {{poi.lastUpdate | date: 'medium'}}
+      </td>
+      <td style="width: 20%">
+        <input class="form-control" type="text" [(ngModel)]="poi.name">
+      </td>
+
+      <td style="width: 20%">
+        <input class="form-control" type="text" [(ngModel)]="poi.description">
+      </td>
+
+      <td>
+        <input class="form-control" type="text" [(ngModel)]="poi.pois" disabled>
+      </td>
+
+      <td>
+        <input class="form-control" type="text" [(ngModel)]="poi.content.imageUrl">
+      </td>
+
+      <td>
+        <input class="form-control" type="text" [(ngModel)]="poi.content.videoUrl">
+      </td>
+
+      <td>
+        <input class="form-control" type="number" [(ngModel)]="poi.location.latitude">
+      </td>
+
+      <td>
+        <input class="form-control" type="number" [(ngModel)]="poi.location.longitude">
+      </td>
+
+      <td style="width: 3%">
+        <input class="form-control" type="number" [(ngModel)]="poi.approximateRadius">
+      </td>
+
+      <td style="width: 15%">
+        <div class="row">
+          <div class="col-md-6">
+            <button (click)="updateCity(poi)" class="btn btn-success">save</button>
+          </div>
+          <div class="col-md-6">
+            <button (click)="deleteCity(poi, i)" class="btn btn-danger">delete</button>
+          </div>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+
+  </table>
+
+</div>
+<div style="position: fixed;  bottom: 4px;  right: 13px; z-index: 999999999999999;">
+  <button md-button md-fab class="md-fab md-primary" aria-label="" (click)="addCity()">
+    <img src="assets/img/ic_add_black_24px.svg">
+  </button>
+</div>
