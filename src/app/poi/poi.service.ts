@@ -15,6 +15,24 @@ export class PoiService {
     return this.restProviderService.get('poi');
   }
 
+  getPoiById(id: string) {
+    return this.restProviderService.get(`poi/id/${id}`);
+  }
+
+  addPoi(obj: Poi): Observable<Poi> {
+    return this.restProviderService.post('poi', obj);
+  }
+
+  updatePoi(obj: Poi): Observable<Poi> {
+    return this.restProviderService.put('poi', obj);
+  }
+
+  deletePoi(poiId: string): Observable<Poi> {
+    return this.restProviderService.remove(`poi/${poiId}`);
+  }
+
+  // cities
+
   getAllCities() {
     return this.restProviderService.get('city');
   }
@@ -31,19 +49,4 @@ export class PoiService {
     return this.restProviderService.remove(`city/${poiId}`);
   }
 
-  getPoiById(id: string) {
-    return this.restProviderService.get(`poi/id/${id}`);
-  }
-
-  addPoi(obj: Poi): Observable<Poi> {
-    return this.restProviderService.post('poi', obj);
-  }
-
-  updatePoi(obj: Poi): Observable<Poi> {
-    return this.restProviderService.put('poi', obj);
-  }
-
-  deletePoi(poiId: string): Observable<Poi> {
-    return this.restProviderService.remove(`poi/${poiId}`);
-  }
 }

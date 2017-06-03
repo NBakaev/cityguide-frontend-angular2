@@ -1,7 +1,11 @@
 /**
  * Created by ya_000 on 4/11/2017.
  */
-export class Poi {
+export class RatedObject {
+  rating: number;
+}
+
+export class Poi extends RatedObject {
   id: string;
   name: string;
   cityId: string;
@@ -11,7 +15,7 @@ export class Poi {
   externalResourceLink: ExternalResourceLink;
 }
 
-export class City {
+export class City extends RatedObject {
   id: string;
   name: string;
   content: Content;
@@ -34,3 +38,4 @@ export class Content {
 export class ExternalResourceLink {
   googlePlaceId: string;
 }
+

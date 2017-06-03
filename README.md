@@ -4,4 +4,4 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 `ng build --prod`
 
-https://cityguide2.nbakaev.com/
+https://cityguide.nbakaev.com/

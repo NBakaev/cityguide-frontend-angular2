@@ -12,25 +12,41 @@
   <div class="col-md-8">
 
     <div *ngIf="editMode && poi">
-      <input [(ngModel)]="poi.name" type="text" class="form-control">
-      <br>
 
-      <div class="row">
+      <div class="row margin-top-xs">
         <div class="col-md-6">
-          <input placeholder="imageUrl" [(ngModel)]="poi.content.imageUrl" class="form-control"> <br>
+          Название
         </div>
         <div class="col-md-6">
-          <input placeholder="videoUrl" [(ngModel)]="poi.content.videoUrl" class="form-control">
+          <input [(ngModel)]="poi.name" type="text" class="form-control">
+        </div>
+      </div>
+
+      <div class="row margin-top-xs">
+        <div class="col-md-6">
+          Рейтинг
+        </div>
+        <div class="col-md-6">
+          <input placeholder="рейтинг" [(ngModel)]="poi.rating" class="form-control" type="number"> <br>
+        </div>
+      </div>
+
+      <div class="row margin-top-xs">
+        <div class="col-md-6">
+          <input placeholder="адрес главного изображения" [(ngModel)]="poi.content.imageUrl" class="form-control"> <br>
+        </div>
+        <div class="col-md-6">
+          <input placeholder="адрес главного видео" [(ngModel)]="poi.content.videoUrl" class="form-control">
         </div>
       </div>
       <br>
-      <div class="row">
+      <div class="row margin-top-xs">
         <div class="col-md-6">
-          lat <br>
+          Широта <br>
           <input placeholder="lat" [(ngModel)]="poi.location.latitude" class="form-control"> <br>
         </div>
         <div class="col-md-6">
-          long <br>
+          Долгота <br>
           <input placeholder="long" [(ngModel)]="poi.location.longitude" class="form-control">
         </div>
       </div>
